@@ -34,7 +34,7 @@ else
 fi
 echo "Installing dependencies..."
 echo ""
-yay -S --noconfirm --needed oh-my-posh neovim tmux zsh fzf zoxide ripgrep fd 
+yay -S --noconfirm --needed oh-my-posh neovim tmux zsh fzf zoxide ripgrep fd stow
 echo ""
 echo "Dependencies installed"
 mkdir -p $HOME/.tmux/plugins
@@ -43,3 +43,8 @@ if [ -d "$HOME/.tmux/plugins/tpm" ]; then
 else
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm    
 fi
+
+echo ""
+echo "Setting up stow"
+SCRIPT_DIR="$(dirname "$0")"
+stow "$SCRIPT_DIR/.." --adopt
