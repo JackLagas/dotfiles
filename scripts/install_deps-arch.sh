@@ -20,6 +20,6 @@ if ! command -v yay &> /dev/null; then
     fi
 fi
 
-yay -S --noconfirm --needed oh-my-posh neovim tmux zsh fzf zoxide ripgrep fd
+yay -S --noconfirm --needed oh-my-posh neovim tmux zsh fzf zoxide ripgrep fd ttf-meslo-nerd
 mkdir -p $HOME/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm    
