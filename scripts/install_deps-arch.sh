@@ -20,6 +20,26 @@ if ! command -v yay &> /dev/null; then
     fi
 fi
 
-yay -S --noconfirm --needed oh-my-posh neovim tmux zsh fzf zoxide ripgrep fd ttf-meslo-nerd
+read -p "Install default font? [Y/n]: " install_font
+if [ "$install_font" = "y" ] || [ "$install_font" = "Y" ] || [ "$install_font" = "" ]; then
+    echo "Installing font..."
+    echo ""
+    yay -S --noconfirm --needed ttf-meslo-nerd
+    echo ""
+    echo "Meslo Nerd installed!"
+    echo "Make sure to set your terminal's font to \"Meslo LGS NF\""
+else
+    echo "Skipping font installtion..."
+    echo "Make sure you're using a nerd font!"
+fi
+echo "Installing dependencies..."
+echo ""
+yay -S --noconfirm --needed oh-my-posh neovim tmux zsh fzf zoxide ripgrep fd 
+echo ""
+echo "Dependencies installed"
 mkdir -p $HOME/.tmux/plugins
-git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm    
+if [ -d "$HOME/.tmux/plugins/tpm" ]; then
+    echo "tpm directory already exists. Skipping installation..."
+else
+    git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm    
+fi
