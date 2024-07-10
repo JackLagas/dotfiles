@@ -46,5 +46,8 @@ fi
 
 echo ""
 echo "Setting up stow"
+CURRENT_DIR=$(pwd)
 SCRIPT_DIR="$(dirname "$0")"
-stow "$SCRIPT_DIR/.." --adopt
+cd $SCRIPT_DIR/..
+stow . --adopt
+cd $CURRENT_DIR
