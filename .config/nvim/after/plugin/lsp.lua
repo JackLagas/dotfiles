@@ -24,6 +24,12 @@ require('mason-lspconfig').setup({
 	},
 })
 
+require('lspconfig').clangd.setup{
+    init_options = {
+        compilationDatabasePath = './build'
+    }
+}
+
 -- completion keybinds
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
