@@ -38,6 +38,8 @@ zinit cdreplay -q
 
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/conf.toml)"
 
+# Bat Theme
+export BAT_THEME="Catppuccin Mocha"
 
 # Keybinds 
 
