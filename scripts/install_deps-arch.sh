@@ -53,7 +53,7 @@ if [ -d "$HOME/.tmux/plugins/tpm" ]; then
 else
     tput smcup
     git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm    
-    tpuc rmcup
+    tput rmcup
 fi
 
 echo ""
