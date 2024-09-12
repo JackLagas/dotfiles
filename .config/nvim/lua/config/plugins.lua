@@ -19,19 +19,26 @@ vim.opt.rtp:prepend(lazypath)
 -- loading lazy.nvim so that mappings are correct.
 -- This is also a good place to setup other settings (vim.opt)
 --
-local import_path
+local plugin_path
+local lsp_path
 if vim.g.vscode then
-    import_path = 'plugins.vscode'
+    plugin_path = 'plugins.vscode'
 else
-    import_path = 'plugins.nvim'
+    plugin_path = 'plugins.nvim'
+    lsp_path = 'plugins.nvim.lsp'
 end
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  spec = {
-    -- import your plugins
-    { import = import_path },
-  },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+    { import = plugin_path },
+        { import = lsp_path },
+},
+{
+    checker = {
+        enabled = true,
+        notify = false,
+    },
+    change_detection = {
+        notify = false,
+    }
 })
