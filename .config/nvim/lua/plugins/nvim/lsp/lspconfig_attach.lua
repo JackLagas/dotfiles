@@ -1,18 +1,6 @@
-return {
-	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		"williamboman/mason.nvim",
-		"hrsh7th/cmp-nvim-lsp",
-		{ "folke/neodev.nvim", opts = {} },
-	},
-	config = function()
-		local nvim_lsp = require("lspconfig")
-		local mason_lspconfig = require("mason-lspconfig")
-		local protocol = require("vim.lsp.protocol")
-
-		local on_attach = function(client, bufnr)
-			local opts = { buffer = bufner, silent = true, remap = false }
+return{
+    on_attach = function(client, bufnr)
+			local opts = { buffer = bufnr, silent = true, remap = false }
 			vim.keymap.set("n", "gd", function()
 				vim.lsp.buf.definition()
 			end, opts)
@@ -53,19 +41,4 @@ return {
 				})
 			end
 		end
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		mason_lspconfig.setup_handlers({
-			function(server)
-				nvim_lsp[server].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["clangd"] = function()
-				nvim_lsp["clangd"].setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-				})
-			end,
-		})
-	end,
 }

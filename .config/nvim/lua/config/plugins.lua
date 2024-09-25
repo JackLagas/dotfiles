@@ -31,7 +31,6 @@ end
 -- Setup lazy.nvim
 require("lazy").setup({
     { import = plugin_path },
-        { import = lsp_path },
 },
 {
     checker = {

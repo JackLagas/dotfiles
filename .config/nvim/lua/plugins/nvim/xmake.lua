@@ -1,5 +1,6 @@
 return {
     "Mythos-404/xmake.nvim",
+    branch = "v2",
     lazy = true,
     event = "BufReadPost xmake.lua",
     keys = {
@@ -11,10 +12,18 @@ return {
     },
     config = function()
         require("xmake").setup({
+            files_path = vim.fn.stdpath("cache") .."xmake_",
             compile_command = {
                 lsp = "clangd",
-                dir = "build",
+                dir = ".",
             },
+            menu = {
+                size = { width = 25, height = 20 },
+                bottom_text_format = "%s(%s)",
+                border_style = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            },
+            debug = false,
+            work_dir = vim.fn.getcwd(),
         })
     end,
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
