@@ -1,6 +1,9 @@
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "447fe95"
+hash = "dcaebc8bc261206f6b59e2c67464af5"
 
-[flavor]
-deps = [{ use = "yazi-rs/flavors:catppuccin-mocha", rev = "d479f67" }]
-
-[plugin]
-deps = [{ use = "boydaihungst/mediainfo", rev = "ddfd5ec" }]
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "d479f67"
+hash = "228f8191fd4f8dbfcf70f9f87073718e"
