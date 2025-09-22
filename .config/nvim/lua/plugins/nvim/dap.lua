@@ -12,7 +12,7 @@ return {
         { "<leader>dl", function() require("dap").run_last() end, desc = "Run Last" },
         { "<leader>dc", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
         { "<leader>dd", "<CMD>DapToggleBreakpoint<CR>", desc = "Toggle Breakpoint" },
-        { "<leader>ddc", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, desc = "Breakpoint Condition" },
+        { "<leader>db", function() require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: ")) end, desc = "Breakpoint Condition" },
         { "<leader>dn", "<CMD>DapStepOver<CR>", desc = "Step Over" },
         { "<leader>di", "<CMD>DapStepInto<CR>", desc = "Step Into" },
         { "<leader>do", "<CMD>DapStepOut<CR>", desc = "Step Out" },
@@ -23,48 +23,41 @@ return {
         local ui = require("dapui")
         local dap_virtual_text = require("nvim-dap-virtual-text")
 
+
         dap_virtual_text.setup()
 
         mason_dap.setup({
-            ensure_installed = {"cppdbg"},
+            ensure_installed = {"codelldb"},
             automatic_installation = true,
             handlers = {
                 function(config) require("mason-nvim-dap").default_setup(config) end,
             },
         })
 
+        dap.adapters.codelldb = {
+            type = "executable",
+            command = "codelldb"
+        }
+        dap.configurations.cpp = {
+            {
+                name = "Launch file",
+                type = "codelldb",
+                request = "launch",
+                program = function()
+                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                end,
+                cwd = '${workspaceFolder}',
+                stopOnEntry = false,
+            },
+        }
+        dap.configurations.c = dap.configurations.cpp
+
+
         local dap_round_groups = { "DapBreakpoint", "DapBreakpointCondition", "DapBreakpointRejected", "DapLogPoint" }
         for _, group in pairs(dap_round_groups) do
             vim.fn.sign_define(group, { text = "●", texthl = group })
         end
 
-        dap.configurations = {
-            cpp = {
-                {
-                    name = "Launch file",
-                    type = "cppdbg",
-                    request = "launch",
-                    program = function()
-				        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-                    end,
-                    cwd = "${workspaceFolder}",
-                    stopAtEntry = false,
-                    MIMode = "lldb",
-                },
-                {
-                    name = "Attach to lldbserver :1234",
-			        type = "cppdbg",
-			        request = "launch",
-			        MIMode = "lldb",
-			        miDebuggerServerAddress = "localhost:1234",
-			        miDebuggerPath = "/usr/bin/lldb",
-			        cwd = "${workspaceFolder}",
-			        program = function()
-				        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			        end,
-                }
-            }
-        }
 
         ui.setup()
 

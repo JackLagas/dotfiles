@@ -4,9 +4,6 @@ return {
     "williamboman/mason.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-        "jay-babu/mason-nvim-dap.nvim",
-        "mfussenegger/nvim-dap",
-        "nvim-neotest/nvim-nio",
         "williamboman/mason-lspconfig.nvim",
 	    "neovim/nvim-lspconfig",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -14,6 +11,9 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "folke/neodev.nvim", opts = {} },
 	},
+    keys = {
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })
+    },
 	config = function()
 		local nvim_lsp = require("lspconfig")
         local mason = require("mason")
@@ -72,6 +72,8 @@ return {
             -- list of servers for mason to install
             ensure_installed = {
                 "clangd",
+                "rust_analyzer",
+                "cmake"
             },
         })
         mason_tool_installer.setup({
@@ -83,20 +85,10 @@ return {
         })
 
 
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		mason_lspconfig.setup_handlers({
-			function(server)
-				nvim_lsp[server].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["clangd"] = function()
-				nvim_lsp["clangd"].setup({
-					on_attach = on_attach,
-					capabilities = capabilities,
-				})
-			end,
-		})
+
+        vim.lsp.enable("clangd")
+        vim.lsp.enable("rust-analyzer")
+        vim.lsp.enable("cmake")
 
 
 	end,
