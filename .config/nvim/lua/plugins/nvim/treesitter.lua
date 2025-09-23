@@ -15,6 +15,7 @@ return 	{
             "bash",
             "c",
             "diff",
+            "dockerfile",
             "html",
             "javascript",
             "jsdoc",
@@ -36,6 +37,7 @@ return 	{
             "vimdoc",
             "xml",
             "yaml",
+            "zsh",
         },
     }
 }

@@ -32,3 +32,8 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
 
 
+-- buffers
+vim.keymap.set("n", "<leader>sj", vim.cmd.vsplit)
+vim.keymap.set("n", "<leader>sh", vim.cmd.split)
+vim.keymap.set("n", "<leader>bd", vim.cmd.bd)
+

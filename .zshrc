@@ -28,21 +28,40 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::command-not-found
 
+
+
 # Load completions
 
 autoload -U compinit && compinit
 
 zinit cdreplay -q
 
-# Load Oh-My-Posh
 
-export PATH=$HOME/.local/bin:$PATH
+export GOPATH=$HOME/go
+export PATH=$HOME/.local/bin:$HOME/go/bin:$PATH
+export PATH="/home/jack/.deno/bin:$PATH"
+
+export TWEEGO_PATH=$HOME/.tweego/
+
+
+# Load Oh-My-Posh
 
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/conf.toml)"
 
 # Set default values
 
 export EDITOR=nvim
+
+# Yazi
+
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 # fzf Theme
 export FZF_DEFAULT_OPTS=" \
@@ -85,6 +104,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Aliases
 
 alias ls='ls --color'
+alias protontricks='flatpak run com.github.Matoking.protontricks'
 
 # Shell integrations
 
@@ -98,3 +118,11 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+
+# Private configs
+if [ -f $HOME/.zsh/private.zsh ]; then
+    source $HOME/.zsh/private.zsh
+fi
+
+export LM_LICENSE_FILE="/home/jack/Repositories/pokeplatinum/tools/cw/license.dat"

@@ -2,3 +2,5 @@
 .config/nvim/lazy-lock.json
 tmux*.log
 .zcompdump
+**/secrets.json
+.zsh/private.zsh

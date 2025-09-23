@@ -15,7 +15,7 @@ if ! command -v yay &> /dev/null; then
         echo "Installing yay..."
         tput smcup
         cd yay
-        makepkg -si --noconfirm --needed &>/dev/null
+        makepkg -si --noconfirm --needed 
         cd ..
         rm -rf yay &>/dev/null
         tput rmcup
