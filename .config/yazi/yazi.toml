@@ -7,7 +7,13 @@ edit = [
 ]
 
 [plugin]
+prepend_preloaders = [
+  # Replace magick, image, video with mediainfo
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+]
 prepend_previewers = [
-    { mime = "{image,audio,video}/*", run = "mediainfo"},
-    { mime = "application/x-subrip", run = "mediainfo"},
+  # Replace magick, image, video with mediainfo
+  { mime = "{audio,video,image}/*", run = "mediainfo"},
+  { mime = "application/subrip", run = "mediainfo" },
 ]
