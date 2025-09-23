@@ -1,14 +1,5 @@
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-<<<<<<< HEAD
-rev = "9629b1e"
-hash = "5204b4e2bd238c40fa66cf0a0191f084"
-
-[[flavor.deps]]
-use = "yazi-rs/flavors:catppuccin-mocha"
-rev = "68326b4"
-hash = "2ac87e1b3a61f5887472899e86535d29"
-=======
 rev = "447fe95"
 hash = "dcaebc8bc261206f6b59e2c67464af5"
 
@@ -16,4 +7,3 @@ hash = "dcaebc8bc261206f6b59e2c67464af5"
 use = "yazi-rs/flavors:catppuccin-mocha"
 rev = "d479f67"
 hash = "228f8191fd4f8dbfcf70f9f87073718e"
->>>>>>> 6e74d784be59803eabca3acf8a830d100b24d542

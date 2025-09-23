@@ -7,10 +7,6 @@
 
 keymap = [
 	{ on = "A", run = "create --dir", desc = "Create new directory" },
-<<<<<<< HEAD
-
-=======
->>>>>>> 6e74d784be59803eabca3acf8a830d100b24d542
     { on = "R", run = "rename --empty=all", desc = "Rename file" },
     { on = "F", run = "rename --cursor=start", desc = "Rename file" },
 
@@ -41,13 +37,8 @@ keymap = [
 	{ on = "<PageUp>",     run = "arrow -100%", desc = "Move cursor up one page" },
 	{ on = "<PageDown>",   run = "arrow 100%",  desc = "Move cursor down one page" },
 
-<<<<<<< HEAD
-	{ on = [ "g", "g" ], run = "arrow bottom", desc = "Move cursor to the top" },
-	{ on = "G",          run = "arrow top",  desc = "Move cursor to the bottom" },
-=======
 	{ on = [ "g", "g" ], run = "arrow top", desc = "Move cursor to the top" },
 	{ on = "G",          run = "arrow bottom",  desc = "Move cursor to the bottom" },
->>>>>>> 6e74d784be59803eabca3acf8a830d100b24d542
 
 	# Navigation
 	{ on = "h", run = "leave", desc = "Go back to the parent directory" },
