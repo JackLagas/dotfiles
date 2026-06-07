@@ -18,6 +18,7 @@ return 	{
             "dockerfile",
             "html",
             "javascript",
+            "jsx",
             "jsdoc",
             "json",
             "jsonc",

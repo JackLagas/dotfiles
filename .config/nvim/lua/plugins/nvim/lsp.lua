@@ -15,7 +15,6 @@ return {
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: Go to definition" })
     },
 	config = function()
-		local nvim_lsp = require("lspconfig")
         local mason = require("mason")
 		local mason_lspconfig = require("mason-lspconfig")
         local mason_tool_installer = require("mason-tool-installer")

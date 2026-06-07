@@ -104,7 +104,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # Aliases
 
 alias ls='ls --color'
-alias protontricks='flatpak run com.github.Matoking.protontricks'
 
 # Shell integrations
 
@@ -126,3 +125,4 @@ if [ -f $HOME/.zsh/private.zsh ]; then
 fi
 
 export LM_LICENSE_FILE="/home/jack/Repositories/pokeplatinum/tools/cw/license.dat"
+export PATH="/home/jack/.gdvm/bin/current_godot:/home/jack/.gdvm/bin:$PATH"
