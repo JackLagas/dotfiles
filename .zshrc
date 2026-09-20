@@ -9,6 +9,9 @@ if [ ! -d "${ZINIT_HOME}" ]; then
     mkdir -p "$(dirname $ZINIT_HOME)"
     git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
+if [ -d "${HOME}/VulkanSDK/default" ]; then
+    source ~/VulkanSDK/default/setup-env.sh
+fi
 
 # Load zinit
 
